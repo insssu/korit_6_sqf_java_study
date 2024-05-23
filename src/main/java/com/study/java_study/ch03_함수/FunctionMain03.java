@@ -14,9 +14,16 @@ public class FunctionMain03 {
         student.studentCode = 3555845;
         student.phone = "141414141414";
 
-
         fx.fx02(student);
 
+        Student student1 = new Student();
+
+        student1.name = "황인수";
+        student1.age = 341;
+        student1.phone = "303303";
+        student1.studentCode = 2351;
+
+        fx.fx02(student1);
 
     }
 }

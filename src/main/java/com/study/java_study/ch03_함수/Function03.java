@@ -13,6 +13,7 @@ public class Function03 {
     }
 
     void fx02(Student i) {
+         //    변수
         System.out.println("fx02 함수 호출");
         System.out.println(i.studentCode);
         System.out.println(i.name);

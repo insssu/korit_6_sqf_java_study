@@ -15,8 +15,19 @@ public class Function02 {
         System.out.println("num2 : " + num2);
     }
 
-
+    // 매개변수도 있고, 리턴도 있는 경우
     String 빙수만들기(String 재료, int count) {
         return 재료 + "빙수 : " + count + "개";      // 리턴 자료형이 String이기 때문에 문자열로 return 해줘야 한다
+
     }
+
+    // 매개변수가 없고, 리턴이 있는 경우
+    String getData() {
+        return "데이터";
+
+    }
+
+
+
+
 }
