@@ -9,16 +9,19 @@ public class ArrayMain02 {
 
         System.out.println(a);
         System.out.println(b);
+        System.out.println();
 
         System.out.println(a == "김준일");     //true
-        System.out.println(b == "김준일");     //false
+        System.out.println(b == "김준일");     //false  주소(200)자체와 주소안의 값(김준일 : 999)은 다르기때문에 false
         System.out.println(a == b);         // false
+        System.out.println();
 
         String[] names = new String[2];         // string을 담을 수 있는 공간 2개를 확보해 두었다. 0번 인덱스에 "김준일", 1번 인덱스에 "김준일"
         names[0] = "김준일";
         names[1] = new String("김준일");
+        System.out.println();
 
-        String[] names2 = {"김준일", new String("김준일")};  // new String[] {}~ 뉴스트링 부분은 생략이 된 경우. 크기를 알아서 할당하기 때문에 [] 안에 수를 입력하면 오류가 난다.
+        String[] names2 = new String[]{"김준일", new String("김준일")};  // new String[] {}~ 뉴스트링 부분은 생략이 된 경우. 크기를 알아서 할당하기 때문에 [] 안에 수를 입력하면 오류가 난다.
 
         System.out.println(names[0] == names2[0]);      // 배열 안의 값 모두 999로 동일하므로 true
         System.out.println(names[1] == names2[1]);      //

@@ -12,10 +12,12 @@ public class 입력01 {
         /*
             next() 메소드 특징
             1. 공백과 줄바꿈(엔터)은 무시한다.
-            2. 버퍼를 사용한다. 버퍼란
+            2. 버퍼를 사용한다. 버퍼란?
          */
-        String a = scanner.next();                                        // python의 input 개념?
+        String a = scanner.nextLine();                                        // python의 input 개념?
         System.out.println("에이 : " + a);
+
+
 
         System.out.print("b: ");
         String b = scanner.nextLine();                                    // nextLine(); 은 스페이스바를 포함한다. 엔터에서 끊음
