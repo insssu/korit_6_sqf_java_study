@@ -4,11 +4,14 @@ import java.awt.print.Book;
 
 // 저장소 -> CRUD가 이루어지는 장소 / 책을 모아놓는 곳은 책꽂이 역할을 하는 배열. / 부품을 만들고 있는 과정을 하는 클래스
 public class BookRepository {
-
+    private int bookId;
     private  BookEntity[] books;   // BookEntity라는 배열에 books라는 변수를 만들었다.
 
-    public BookRepository() {
-        books = new BookEntity[0];      // bookrepository가 생성되어질 때
+    public BookRepository() { books = new BookEntity[0]; }     // bookrepository가 생성되어질 때
+
+
+    public int autoIncrementBookId() {
+        return ++bookId;
     }
 
     private void extendBooks() {        // save 클래스 안에서만 쓰는 메소드 이기 때문에 private을 잡아놓은 것. 외부에 노출시키지 않고 작업
@@ -24,9 +27,7 @@ public class BookRepository {
                                 //
     }
 
-    private int getLastIndex() {
-        return books.length -1;
-    }
+    private int getLastIndex() { return books.length -1; }
 
     public void saveBook(BookEntity book) {             // book이라는 객체를 하나 받아온다. 그것을 배열에 추가를 할 것이다.
 
@@ -68,17 +69,17 @@ public class BookRepository {
     private  int getNewArraySize(int option, String searchText) {
         int newArraySize = 0;
 
-
         switch (option) {
             case 1:   //통합검색
                 for(BookEntity book : books) {
                     if (book.getBookName().contains(searchText)
-                    || book.getAuthor().contains(searchText)
-                    || book.getPublisher().contains(searchText)) {     // equals는 완전히 같은 이름을 써야하지만 contains는 문자열에 포함이 되어있다면.
-                    newArraySize++;        // i번째 인덱스의 자리에 book을 집어 넣는다.
+                            || book.getAuthor().contains(searchText)
+                            || book.getPublisher().contains(searchText)) {     // equals는 완전히 같은 이름을 써야하지만 contains는 문자열에 포함이 되어있다면.
+                        newArraySize++;        // i번째 인덱스의 자리에 book을 집어 넣는다.
                     }
                 }
                 break;
+
             case 2:   //도서명검색
                 for(BookEntity book : books) {
                     if (book.getBookName().contains(searchText)) {
@@ -86,6 +87,7 @@ public class BookRepository {
                     }
                 }
                 break;
+
             case 3:   //저자명검색
                 for(BookEntity book : books) {
                     if(book.getAuthor().contains(searchText)) {
@@ -93,6 +95,7 @@ public class BookRepository {
                     }
                 }
                 break;
+
             case 4:   //출판사명검색
                 for(BookEntity book : books) {
                     if(book.getPublisher().contains(searchText)) {
@@ -152,7 +155,6 @@ public class BookRepository {
                 }
 
         }
-
 
         return searchBooks;
 
