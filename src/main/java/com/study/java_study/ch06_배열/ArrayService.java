@@ -37,7 +37,7 @@ public class ArrayService {
                     for(int i = 0; i < names.length; i++) {
                         newNames[i] = names[i];
                     }
-                    names = newNames;
+                    names = newNames;    //
                     System.out.print("등록 할 이름 : ");
                     names[names.length - 1] = scanner.nextLine();
                     System.out.println("등록 완료");
@@ -88,7 +88,7 @@ public class ArrayService {
                         }
                         newNames[i] = names[i + 1];
                     }
-                    names = newNames;
+                    names = newNames;                               // 배열 크기의 변화가 있을 때 적용시켜줘야 하는 작업?
                     System.out.println(removeName + "을(를) 삭제하였습니다.");
 
                     break;
