@@ -1,5 +1,6 @@
 package com.study.java_study.ch09_클래스04;
 
+// Entity : 정보의 집합체. 정보를 꺼내올 때 출력해주는 중간의 데이터 덩어리.
 public class BookEntity {
 
     private int bookId;
@@ -47,8 +48,8 @@ public class BookEntity {
     }
 
     @Override
-    public String toString() {
-        return "BookEntity{" +
+    public String toString() {                              // toString :
+        return "BookEntity{" +                              // 객체안의 어떤 값이 들어있는가를 출력해주는 역할
                 "bookId=" + bookId +
                 ", bookName='" + bookName + '\'' +
                 ", author='" + author + '\'' +
@@ -56,7 +57,7 @@ public class BookEntity {
                 '}';
     }
 
-    public BookEntity() {
+    public BookEntity() {                                   //
     }
 
 

@@ -5,7 +5,7 @@ import java.awt.print.Book;
 // 저장소 -> CRUD가 이루어지는 장소 / 책을 모아놓는 곳은 책꽂이 역할을 하는 배열. / 부품을 만들고 있는 과정을 하는 클래스
 public class BookRepository {
     private int bookId;
-    private  BookEntity[] books;   // BookEntity라는 배열에 books라는 변수를 만들었다.
+    private BookEntity[] books;   // BookEntity라는 배열에 books라는 변수를 만들었다.
 
     public BookRepository() { books = new BookEntity[0]; }     // bookrepository가 생성되어질 때
 
