@@ -1,5 +1,7 @@
 package com.study.java_study.ch09_클래스04;
 
+import com.sun.source.tree.ContinueTree;
+
 import java.awt.print.Book;
 
 // 저장소 -> CRUD가 이루어지는 장소 / 책을 모아놓는 곳은 책꽂이 역할을 하는 배열. / 부품을 만들고 있는 과정을 하는 클래스
@@ -57,6 +59,7 @@ public class BookRepository {
     public BookEntity findBookByBookName(String bookName) {
         BookEntity findBook = null;
 
+        // 선형탐색
         for(BookEntity book : books) {                  // for 반복할거다. private  BookEntity[] books;를. books와 1:1로 비교해서
             if(book.getBookName().equals(bookName)) {   // 만약. book의 이름중에. bookName과 같은게 있다면 (문자열 비교이기 때문에 equals()를 이용해서 비교)
                 findBook = book;                        // findeBook에 입력한 book 값을 대입하고
@@ -110,10 +113,10 @@ public class BookRepository {
 
 
     // 다건조회
-    public BookEntity[] searchBooks(int option, String searchText) {            // 매개변수 option과 searchText를 넣어줄거야
-        int newArraySize = getNewArraySize(option, searchText);
+    public BookEntity[] searchBooks(int option, String searchText) {  // 매개변수 option과 searchText를 넣어줄거야
+        int newArraySize = getNewArraySize(option, searchText);       // 배열을 만들기 전 배열이 있는지부터 찾는 조건.
 
-        BookEntity[] searchBooks = new BookEntity[newArraySize];                // 검색해서 찾은 도서의 수량을 알아야(사이즈를 알아야) 검색한 것이 몇개인지
+        BookEntity[] searchBooks = new BookEntity[newArraySize];      // 검색해서 찾은 도서의 수량을 알아야(사이즈를 알아야) 검색한 것이 몇개인지
 
         int i = 0;
         switch (option) {
@@ -159,5 +162,43 @@ public class BookRepository {
         return searchBooks;
 
     }
+
+    private int indexOfBookId(int bookId) {
+        int findIndex = -1;
+
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getBookId() == bookId) {
+                findIndex = i;
+                break;
+            }
+        }
+
+        return  findIndex;
+    }
+
+
+    public void deleteBookByBookId(int bookId) {     // 배열을 줄여야 하는 작업이 필요
+        int findIndex = indexOfBookId(bookId);
+        BookEntity[] newBooks = new BookEntity[books.length - 1];      // 배열이 하나 작은 새로운 빈 배열을 만듬
+        /*
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getBookId() == bookId) {
+                findIndex = i;
+                break;
+            }
+        }
+
+         */
+
+        for (int i = 0; i < newBooks.length; i++) {
+            if (i < findIndex) {
+                newBooks[i] = books[i];
+                continue;
+            }
+            newBooks[i] = books[i + 1];
+        }
+        books = newBooks;
+    }
+
 
 }

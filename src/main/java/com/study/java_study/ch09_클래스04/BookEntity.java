@@ -1,6 +1,6 @@
 package com.study.java_study.ch09_클래스04;
 
-// Entity : 정보의 집합체. 정보를 꺼내올 때 출력해주는 중간의 데이터 덩어리.
+// Entity : 정보의 집합체. 정보를 꺼내올 때 출력해주는 중간의 데이터 덩어리. 정보 하나하나의 공간
 public class BookEntity {
 
     private int bookId;
