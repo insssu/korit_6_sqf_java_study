@@ -1,4 +1,4 @@
-package com.study.java_study.ch10_추상화;
+package com.study.java_study.ch10_추상화01;
 
 public class Animal {
     private String name;

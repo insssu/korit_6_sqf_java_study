@@ -1,4 +1,4 @@
-package com.study.java_study.ch10_추상화;
+package com.study.java_study.ch10_추상화01;
 
 public class Dog extends Animal{       // animal은 dog를 추상화 했다.
     /*
@@ -20,6 +20,16 @@ public class Dog extends Animal{       // animal은 dog를 추상화 했다.
     }
 
     @Override
+    public void move() { // ctrl + 'o' 를 입력하면 나오는 기능
+        System.out.println("강아지가 네발로 움직입니다.");
+    }
+
+    public void bark() {
+        System.out.println(breed + "종의 강아지가 짖습니다.");
+    }
+
+
+    @Override           //윗줄에 public void만 입력했을 경우 빨간밑줄이 생기는 이유는 뭐지?
     public String toString() {
         return "Dog{" +
                 "breed='" + breed + '\'' +

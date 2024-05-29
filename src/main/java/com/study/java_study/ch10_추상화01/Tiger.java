@@ -1,4 +1,4 @@
-package com.study.java_study.ch10_추상화;
+package com.study.java_study.ch10_추상화01;
 
 public class Tiger extends Animal {
     /*
@@ -33,7 +33,9 @@ public class Tiger extends Animal {
                                 // 생성할때만 super()의 위치가 중요하지만 호출 할 때는 순서상관은 없다.
     }
 
-
+    public void hunt() {
+        System.out.println("호랑이가 " + power + "의 힘으로 사냥을 합니다.");
+    }
 
     @Override
     public String toString() {
