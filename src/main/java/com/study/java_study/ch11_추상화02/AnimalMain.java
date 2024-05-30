@@ -3,6 +3,8 @@ package com.study.java_study.ch11_추상화02;
 public class AnimalMain {
 
     public static void main(String[] args) {
+    //  Animal a = new Animal();  <- 2. 추상클래스는 생성할 수 없다.
+
         Animal[] animals = new Animal[10];
 
         for(int i = 0; i < animals.length; i++) {
