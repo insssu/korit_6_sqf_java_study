@@ -46,9 +46,10 @@ public class BookService {
                 break;
 
             case "1":
-
+                registerBook();
                 break;
             case "2":
+
                 break;
             case "3":
                 break;
@@ -65,7 +66,7 @@ public class BookService {
 
     private String validateValue(String title) {
         String value = null;
-        while(true) {
+        while (true) {
             System.out.println(title + "명 입력 : ");
         }
     }
@@ -74,7 +75,7 @@ public class BookService {
         String bookName = null;
         while (true) {
             bookName = validateValue("도서");
-            if(bookRepository.findBookByBookName(bookName) == null) {
+            if (bookRepository.findBookByBookName(bookName) == null) {
                 break;
             }
             System.out.println("해당 도서명이 이미 존재합니다.");
@@ -94,4 +95,19 @@ public class BookService {
         bookRepository.saveBook(book);
     }
 
+    private void searchBook() {
+        System.out.println("[ 도서 검색 ]");
+        System.out.println("1. 통합 검색");
+        System.out.println("2. 도서명 검색");
+        System.out.println("3. 저자명 검색");
+        System.out.println("4. 출판사명 검색");
+        System.out.print("옵션 선택 : ");
+
+        int option = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("검색어 입력 : ");
+        String searchText = scanner.nextLine();
+        BookEntity[] searchBooks = bookRepository.searchBooks(option, searchText);
+
+    }
 }

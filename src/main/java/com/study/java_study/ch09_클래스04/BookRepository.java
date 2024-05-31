@@ -179,7 +179,6 @@ public class BookRepository {
         return  findIndex;
     }
 
-
     public void deleteBookByBookId(int bookId) {     // 배열을 줄여야 하는 작업이 필요
         int findIndex = indexOfBookId(bookId);
         BookEntity[] newBooks = new BookEntity[books.length - 1];      // 배열이 하나 작은 새로운 빈 배열을 만듬
@@ -188,6 +187,7 @@ public class BookRepository {
             if (books[i].getBookId() == bookId) {
                 findIndex = i;
                 break;
+
             }
         }
 

@@ -43,4 +43,51 @@ public class BookRepository {
         }
         return findBook;
     }
+
+    public BookEntity[] searchBooks(int option, String searchText) {
+        int newArraySize = getNewArraySize(option, searchText);
+
+        BookEntity[] searchBooks = new BookEntity[newArraySize];
+
+        int i = 0;
+        switch (option) {
+            case 1:
+                for (BookEntity book : books) {
+                    if (book.getBookName().contains(searchText)
+                            || book.getAuthor().contains(searchText)
+                            || book.getPublisher().contains(searchText)) {
+                        searchBooks[i] = book;
+                        i++;
+                    }
+                }
+                break;
+
+            case 2:
+                for (BookEntity book : books) {
+                    if (book.getBookName().contains(searchText)) {
+                        searchBooks[i] = book;
+                        i++;
+                    }
+                }
+                break;
+
+            case 3:
+                for (BookEntity book : books) {
+                    if (book.getAuthor().contains(searchText)) {
+                        searchBooks[i] = book;
+                        i++;
+                    }
+                }
+                break;
+
+            case 4:
+                for (BookEntity book : books) {
+                    if (book.getPublisher().contains(searchText)) {
+                        searchBooks[i] = book;
+                        i++;
+                    }
+                }
+                break;
+        }
+    }
 }
