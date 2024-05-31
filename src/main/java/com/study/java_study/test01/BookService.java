@@ -45,15 +45,16 @@ public class BookService {
                 isRun = false;
                 break;
 
-            case "5":
-                break;
             case "1":
+
                 break;
             case "2":
                 break;
             case "3":
                 break;
             case "4":
+                break;
+            case "5":
                 break;
             default:
                 System.out.println("입력 오류");
@@ -67,6 +68,30 @@ public class BookService {
         while(true) {
             System.out.println(title + "명 입력 : ");
         }
+    }
+
+    private String duplicateBookName() {
+        String bookName = null;
+        while (true) {
+            bookName = validateValue("도서");
+            if(bookRepository.findBookByBookName(bookName) == null) {
+                break;
+            }
+            System.out.println("해당 도서명이 이미 존재합니다.");
+        }
+        return bookName;
+
+    }
+
+    private void registerBook() {
+        System.out.println("[ 도서 등록 ]");
+        int bookId = bookRepository.autoIncreasementBookId();
+        String bookName = duplicateBookName();
+        String author = validateValue("저자");
+        String publisher = validateValue("출판사");
+
+        BookEntity book = new BookEntity(bookId, bookName, author, publisher);
+        bookRepository.saveBook(book);
     }
 
 }

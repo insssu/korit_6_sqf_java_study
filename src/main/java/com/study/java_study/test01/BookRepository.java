@@ -14,4 +14,33 @@ public class BookRepository {
     private void extendBooks() {
         BookEntity[] newBooks = new BookEntity[books.length + 1];
     }
+
+    private int getLastIndex() { return books.length -1;}
+
+    public void saveBook(BookEntity book) {
+        extendBooks();
+        books[getLastIndex()] = book;
+    }
+
+    public BookEntity findBookByBookId(int bookId) {
+        BookEntity findBook = null;
+        for(BookEntity book : books) {
+            if(book.getBookId() == bookId) {
+                findBook = book;
+                break;
+            }
+        }
+        return findBook;
+    }
+
+    public BookEntity findBookByBookName(String bookName) {
+        BookEntity findBook = null;
+        for(BookEntity book : books) {
+            if(book.getBookName().equals(bookName)) {
+                findBook = book;
+                break;
+            }
+        }
+        return findBook;
+    }
 }

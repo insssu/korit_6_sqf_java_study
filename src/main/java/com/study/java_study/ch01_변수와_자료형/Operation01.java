@@ -70,7 +70,5 @@ public class Operation01 {
         number %= 2;
 
 
-
-
     }
 }

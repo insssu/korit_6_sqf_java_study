@@ -1,5 +1,6 @@
 package com.study.java_study.ch09_클래스04;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BookService {
@@ -13,6 +14,40 @@ public class BookService {
     }
 
     private String selectMenu() {
+        String[] menus = {"1", "2", "3", "4", "5", "q"};
+
+        String selectedMenu = null;
+
+        while (true) {
+            System.out.print("메뉴 선택 : ");
+            selectedMenu = scanner.nextLine();
+            if (Arrays.binarySearch(menus, selectedMenu) > -1) {
+                break;
+            }
+            System.out.println("잘못된 입력입니다.");
+        }
+        return selectedMenu;
+    }
+/*
+            김결휘
+            System.out.print("메뉴 선택 : ");
+            selectedMenu = scanner.nextLine();
+            for (String menu : menus) {
+                if (menu.equals(selectedMenu)) {
+                    break;
+                }
+          }
+          System.out.println("잘못된 입력입니다.");
+        내가푼부분
+            for (int i = 0; i < menus.length; i++) {
+                if (menus[i].contains(selectedMenu)) {
+                    break;
+                }
+                System.out.println("잘못된 입력입니다.");
+            }
+            return selectedMenu;
+            */
+/*
         String menus = "1234q";                 // 원래는 배열로 해야하지만 임의로.
         String selectedMenu = null;
 
@@ -25,7 +60,9 @@ public class BookService {
             System.out.println("잘못된 입력입니다. 다시 입력하세요.");
         }
         return selectedMenu;                    // while문이 실행이 되면 selectedMenu = scanner.nextLine();에서 값을 넣어주는것을 출력
-    }                                           // if조건에서 입력받은 selectedMenu의 조건의 참 거짓을 판별
+    }
+     */                   // if조건에서 입력받은 selectedMenu의 조건의 참 거짓을 판별
+
 
     public boolean run() {
         boolean isRun = true;
@@ -38,7 +75,7 @@ public class BookService {
         System.out.println("5. 도서 전체 조회");
         System.out.println("q. 프로그램 종료");
 
-        String selectedMenu = selectMenu();         //
+        String selectedMenu = selectMenu();
 
         switch (selectedMenu) {
             case "q":
@@ -75,10 +112,10 @@ public class BookService {
 
     private String validateValue(String title) {            //
         String value = null;
-        while(true) {
+        while (true) {
             System.out.print(title + "명 입력 : ");
             value = scanner.nextLine();
-            if(!value.isBlank()) {                // 공백이 아니라면. if문을 빠져나온다. isBlank는 띄어쓰기를 문자로 포함시키는 경우. 공백체크
+            if (!value.isBlank()) {                // 공백이 아니라면. if문을 빠져나온다. isBlank는 띄어쓰기를 문자로 포함시키는 경우. 공백체크
                 break;
             }
             System.out.println(title + "명은 공백일 수 없습니다. 다시 입력하세요."); // isEmpty는 띄어쓰기를 포함하지 않고 받고싶은 경우
@@ -90,7 +127,8 @@ public class BookService {
         String bookName = null;
         while (true) {                                               // 2. while문이 실행되는 동안
             bookName = validateValue("도서");            // 공백체크.  // 3. 입력할 "도서"를 입력
-            if (bookRepository.findBookByBookName(bookName) == null) {
+            if (bookRepository.findBookByBookName(bookName) == null) { // bookRepository에 존재하는지 확인하는 문장 ,
+                // 없다면 입력받은 bookname을 사용한다는 로직이 된다.
                 break;
             }
             System.out.println("해당 도서명이 이미 존재합니다");
@@ -98,9 +136,9 @@ public class BookService {
         return bookName;                        // 1. bookName을 리턴할거다
     }
 
-    private void registerBook() {
+    private void registerBook() {       //
         System.out.println("[ 도서 등록 ]");
-        int bookId = bookRepository.autoIncrementBookId();
+        int bookId = bookRepository.autoIncrementBookId();  //
         String bookName = duplicateBookName();              // 중복이 안되게끔 만들거야.
         String author = validateValue("저자");
         String publisher = validateValue("출판사");
@@ -140,11 +178,11 @@ public class BookService {
         BookEntity[] searchBooks = bookRepository.searchBooks(option, searchText);  // searchBooks의 역할은 option, searchText 의 자료를 받아와서 실행
 
         System.out.println("[ 검색 결과 ]");
-        if(searchBooks.length == 0) {
+        if (searchBooks.length == 0) {
             System.out.println("검색 결과가 없습니다.");
             return;
         }
-        for(BookEntity book : searchBooks) {
+        for (BookEntity book : searchBooks) {
             System.out.println(book.toString());
 
         }
@@ -157,7 +195,7 @@ public class BookService {
         int removeBookId = scanner.nextInt();
         scanner.nextLine();
         BookEntity book = bookRepository.findBookByBookId(removeBookId);
-        if(book == null) {
+        if (book == null) {
             System.out.println("해당 도서번호는 존재하지 않습니다.");
             return;
         }
@@ -173,18 +211,18 @@ public class BookService {
         int modifyBookId = scanner.nextInt();
         scanner.nextLine();
         BookEntity book = bookRepository.findBookByBookId(modifyBookId);
-        if(book == null) {
+        if (book == null) {
             System.out.println("해당 도서는 존재하지 않습니다.");
             return;
         }
         System.out.println("<< 도서 수정 정보 입력 >>");
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             String selected = null;
             switch (i) {
                 case 0:
                     System.out.print("도서명을 수정하시겠습니까? (y/n) : ");
                     selected = scanner.nextLine();
-                    if(selected.equalsIgnoreCase("y")) {        // equalsIgnoreCase는 대소문자 구분없이 문자열을 구분해라.
+                    if (selected.equalsIgnoreCase("y")) {        // equalsIgnoreCase는 대소문자 구분없이 문자열을 구분해라.
                         String bookName = duplicateBookName();
                         book.setBookName(bookName);
                         break;
@@ -194,7 +232,7 @@ public class BookService {
                 case 1:
                     System.out.print("저자를 수정하시겠습니까? (y/n) : ");
                     selected = scanner.nextLine();
-                    if(selected.equalsIgnoreCase("y")) {        // equalsIgnoreCase는 대소문자 구분없이 문자열을 구분해라.
+                    if (selected.equalsIgnoreCase("y")) {        // equalsIgnoreCase는 대소문자 구분없이 문자열을 구분해라.
                         String author = validateValue("저자");
                         book.setAuthor(author);
                         break;
@@ -204,7 +242,7 @@ public class BookService {
                 case 2:
                     System.out.print("출판사를 수정하시겠습니까? (y/n) : ");
                     selected = scanner.nextLine();
-                    if(selected.equalsIgnoreCase("y")) {        // equalsIgnoreCase는 대소문자 구분없이 문자열을 구분해라.
+                    if (selected.equalsIgnoreCase("y")) {        // equalsIgnoreCase는 대소문자 구분없이 문자열을 구분해라.
                         String publisher = validateValue("출판사");
                         book.setPublisher(publisher);
                         break;

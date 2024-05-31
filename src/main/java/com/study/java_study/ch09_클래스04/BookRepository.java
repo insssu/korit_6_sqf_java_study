@@ -3,6 +3,7 @@ package com.study.java_study.ch09_클래스04;
 import com.sun.source.tree.ContinueTree;
 
 import java.awt.print.Book;
+import java.util.Arrays;
 
 // 저장소 -> CRUD가 이루어지는 장소 / 책을 모아놓는 곳은 책꽂이 역할을 하는 배열. / 부품을 만들고 있는 과정을 하는 클래스
 public class BookRepository {
@@ -17,17 +18,19 @@ public class BookRepository {
     }
 
     private void extendBooks() {        // save 클래스 안에서만 쓰는 메소드 이기 때문에 private을 잡아놓은 것. 외부에 노출시키지 않고 작업
-        // 기존 배열보다 크기가 하나 더 큰 배열을 생성한다.
+   /*     // 기존 배열보다 크기가 하나 더 큰 배열을 생성한다.
         BookEntity[] newBooks = new BookEntity[books.length + 1];  // save메소드가 호출될 때 마다 배열크기가 하나 큰 새로운 배열을 만들 것이다.
 
         // 기존 배열의 정보를 새로운 배열로 모두 옮긴다. 이 때 마지막 인덱스의 값은 빈 값이다.
         for(int i = 0; i < books.length; i++) {     // books.length 기존배열
             newBooks[i] = books[i];                 // books.length의 길이만큼, 위치도 동일하니 그대로 옮겨준 과정
-        }
+        }*/
 
-        books = newBooks;       // 주소값을 통째로 옮기는 과정. 기존 배열의 주소가 들어있는 books 변수에 새로운 배열의 주소를 대입한다.
+        books = Arrays.copyOf(books, books.length + 1);       // 주소값을 통째로 옮기는 과정. 기존 배열의 주소가 들어있는 books 변수에 새로운 배열의 주소를 대입한다.
                                 //
     }
+
+
 
     private int getLastIndex() { return books.length -1; }
 
