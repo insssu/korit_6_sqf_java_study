@@ -20,6 +20,7 @@ public class StudentMain {
         StudentRepository.getInstance().add("박인수");         // StudentRepository.getInstance() 이것 자체가 객체의 주소가 되어서 .add() 를 바로 받아서 입력할 수 있음
         studentService2.addStudent();
 
+
         studentService.getStudentData();
 
 
