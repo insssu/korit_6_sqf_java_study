@@ -80,10 +80,17 @@ public class BookArrayListMain {
 
         for (int i = 0; i < bookList.size(); i++) {
             if (bookList.get(i).getBookName().equals(removeBookName)) {     // get(i) 는 어떤걸 가져온건가? Book 객체 하나를 꺼내온 주솟값. 그러고나서 getBookName.
-                Book removeBook = bookList.remove(i);
+                Book removeBook = bookList.remove(i);                       // get(i) 는 배열의 참조를 하겠다.
                 System.out.println("삭제된 도서 정보 : " + removeBook);
                 break;
             }
         }
+
+        for (int i = 0; i < bookList.size(); i++) {
+            System.out.println("도서명 : " + bookList.get(i).getBookName());
+            System.out.println("저자명 : " + bookList.get(i).getAuthor());
+        }
+
+
     }
 }
