@@ -10,7 +10,7 @@ public class MessageMain {
 //        int num;
 //
 //        num = 10;           // 초기화는 언제든지 생성 할 수 있다.
-//        Message<Object>
+//      Message<Object>
         Message<?> m1;        // integer 외에 다른 자료형, 예를들어 String으로도 넣고 싶을 때는?
         Message<String> m2 = null;
 

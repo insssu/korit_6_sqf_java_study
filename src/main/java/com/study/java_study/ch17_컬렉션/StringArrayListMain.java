@@ -8,9 +8,12 @@ public class StringArrayListMain {
     public static void main(String[] args) {
 
         String[] strArray = new String[10];
+        Integer[] n = {1, 2, 3, 4, 5};
 
         ArrayList<String> strList = new ArrayList<>();      // 데이터의 순서와
         strList.add("test1");
+
+        List<Integer> nList = Arrays.asList(n);
 
         // 배열<-> 리스트 변환             // 배열을 리스트로 바꿀 수 있다.
         List<String> list = Arrays.asList(strArray);        // 매개변수 타입때문에 변경되고, 한가지더,
@@ -53,6 +56,7 @@ public class StringArrayListMain {
         // 수정
         nums3.set(0, 10);
         System.out.println(nums3);
+
         nums3.addAll(List.of(1, 2, 3));
         System.out.println(nums3);
         System.out.println();
@@ -62,6 +66,7 @@ public class StringArrayListMain {
             System.out.println(nums3.get(i));           // List 에서 get 해라 i 번째 인덱스 값을
         }
         System.out.println();
+
         for (Integer num : nums3) {
             System.out.println(num);
         }

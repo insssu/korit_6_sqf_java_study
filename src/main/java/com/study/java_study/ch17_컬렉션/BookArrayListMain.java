@@ -34,7 +34,7 @@ public class BookArrayListMain {
         // 도서명 : 도서1, 3
         // 저자명 : 저자1, 3
 
-        // 내가 풀이
+        // 내가한 풀이
 //        Scanner scanner = new Scanner(System.in);
 //        ArrayList<String> newBook = new ArrayList<>();
 //

@@ -37,6 +37,5 @@ public class StringHashSetMain {
         strList.sort((o1, o2) -> String.CASE_INSENSITIVE_ORDER.compare(o1, o2));
         System.out.println(strList);
 
-
     }
 }
