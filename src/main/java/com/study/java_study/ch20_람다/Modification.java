@@ -17,3 +17,4 @@ public interface Modification<T> {
    // T modify2(T oldData, T newData); 두개를 재정의 할 수 없음. 누구를 재정의 할 지 모르기 때문에
 
 }
+
